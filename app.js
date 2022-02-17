@@ -1,5 +1,10 @@
 const Add = function (numbers) {
   let delimeter = ","
+  if(numbers.match(/\n/)){
+    numbers = numbers.replace(/\n/g,",");
+    
+  }
+
   let nums=numbers.split(delimeter).filter(i => i.length>0)
   nums = nums.map(i=>{
     const val= parseInt(i);
