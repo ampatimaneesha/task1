@@ -1,11 +1,18 @@
 const Add = function (numbers) {
   let delimeter = ","
+  if(numbers.match(/\/\//)){
+    const delPrefix = numbers.split("//")[1]
+    delimeter = delPrefix[0]
+    numbers = delPrefix.substring(1).replace(/\n/,"");
+    const regexp = new RegExp(`${delimeter}`)
+    numbers = numbers.replace(regexp, delimeter)
+    
+  }
   if(numbers.match(/\n/)){
     numbers = numbers.replace(/\n/g,",");
     
   }
-
-  let nums=numbers.split(delimeter).filter(i => i.length>0)
+ let nums=numbers.split(delimeter).filter(i => i.length>0)
   nums = nums.map(i=>{
     const val= parseInt(i);
     if(val<0)
